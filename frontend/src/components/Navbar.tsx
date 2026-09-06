@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ticket, Sparkles, Globe, Calendar, FileText, Info } from 'lucide-react';
+import { Ticket, Sparkles, Globe, Calendar, FileText, Info, ExternalLink } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: 'checker' | 'results' | 'schedule' | 'guide';
@@ -93,8 +93,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </nav>
 
-          {/* Language Toggle */}
+          {/* Language Toggle & Official Portal */}
           <div className="flex items-center gap-2">
+            <a
+              href="https://statelottery.kerala.gov.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-950/40 hover:bg-emerald-900/40 text-emerald-300 border border-emerald-800/50 transition-colors shadow-inner"
+              title="Official Directorate of Kerala State Lotteries"
+            >
+              <span>Govt Portal</span>
+              <ExternalLink className="w-3 h-3 text-emerald-400" />
+            </a>
+
             <button
               onClick={() => setLang(lang === 'en' ? 'ml' : 'en')}
               className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 transition-colors shadow-inner"

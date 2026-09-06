@@ -160,6 +160,8 @@ function verifyTicketClient(draw: DrawDetail, rawSeries: string, rawNumber: stri
     total_prize_amount: totalAmount,
     winning_tiers: matches,
     claim_instructions: claimInstructions,
+    pdf_url: draw.pdf_url,
+    source_url: draw.source_url,
     checked_at: new Date().toLocaleString(),
   };
 }

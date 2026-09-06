@@ -57,4 +57,6 @@ class TicketCheckResponse(BaseModel):
     total_prize_amount: int
     winning_tiers: List[WinningTierMatch] = Field(default_factory=list)
     claim_instructions: str
+    pdf_url: Optional[str] = None
+    source_url: Optional[str] = None
     checked_at: str

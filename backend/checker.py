@@ -161,5 +161,7 @@ def verify_ticket(
         total_prize_amount=total_amount,
         winning_tiers=matches,
         claim_instructions=get_claim_instructions(total_amount),
+        pdf_url=draw.pdf_url,
+        source_url=draw.source_url,
         checked_at=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     )

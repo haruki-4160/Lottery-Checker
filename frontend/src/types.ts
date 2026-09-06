@@ -53,5 +53,7 @@ export interface TicketCheckResponse {
   total_prize_amount: number;
   winning_tiers: WinningTierMatch[];
   claim_instructions: string;
+  pdf_url?: string;
+  source_url?: string;
   checked_at: string;
 }

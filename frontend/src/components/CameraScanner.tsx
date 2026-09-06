@@ -180,10 +180,10 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
       <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-800 bg-slate-900/90">
+        <div className="flex items-center justify-between px-5 py-3.5 border-b-2 border-orange-500/30 bg-[#161820]">
           <div className="flex items-center gap-2">
-            <Camera className="w-5 h-5 text-amber-400" />
-            <h3 className="font-bold text-slate-100 text-sm sm:text-base">
+            <Camera className="w-5 h-5 text-orange-400" />
+            <h3 className="font-black text-slate-100 text-sm sm:text-base">
               {lang === 'en' ? 'Live Ticket Scanner' : 'ലൈവ് ടിക്കറ്റ് സ്കാനർ'}
             </h3>
           </div>
@@ -192,7 +192,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
             {cameras.length > 1 && (
               <button
                 onClick={toggleCamera}
-                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                className="p-1.5 rounded-lg bg-[#0e1014] hover:bg-[#1a1d24] text-slate-300 border border-orange-500/30 transition-colors cursor-pointer"
                 title="Switch Camera"
               >
                 <RefreshCw className="w-4 h-4" />
@@ -200,7 +200,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
             )}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+              className="p-1.5 rounded-lg bg-[#0e1014] hover:bg-[#1a1d24] text-slate-300 border border-orange-500/30 transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -214,17 +214,17 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
 
           {/* Viewfinder Target Overlays */}
           <div className="absolute inset-0 pointer-events-none flex items-center justify-center p-6">
-            <div className="relative w-64 sm:w-72 h-36 sm:h-40 border-2 border-dashed border-amber-400/70 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+            <div className="relative w-64 sm:w-72 h-36 sm:h-40 border-2 border-dashed border-orange-500/80 rounded-xl flex items-center justify-center shadow-[0_0_24px_rgba(249,115,22,0.3)]">
               {/* Laser animation */}
               <div className="laser-line"></div>
 
               {/* Corner markers */}
-              <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-amber-400"></div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-amber-400"></div>
-              <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-amber-400"></div>
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-amber-400"></div>
+              <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-orange-400"></div>
+              <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-orange-400"></div>
+              <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-orange-400"></div>
+              <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-orange-400"></div>
 
-              <span className="text-[11px] bg-slate-900/80 px-2 py-1 rounded text-amber-300 font-semibold tracking-wider uppercase backdrop-blur-sm">
+              <span className="text-[11px] bg-[#101216]/90 px-2.5 py-1 rounded text-orange-400 font-black tracking-wider uppercase border border-orange-500/40 shadow-xs">
                 {lang === 'en' ? 'Align Series & 6 Digits' : 'സീരീസും നമ്പറും ഇവിടെ വെയ്ക്കുക'}
               </span>
             </div>
@@ -232,9 +232,9 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
 
           {/* OCR Processing Overlay */}
           {isProcessingOcr && (
-            <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-xs flex flex-col items-center justify-center gap-3 p-4 z-20">
-              <div className="w-8 h-8 border-3 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
-              <p className="text-xs font-semibold text-amber-300 text-center animate-pulse">
+            <div className="absolute inset-0 bg-[#0e1014]/90 flex flex-col items-center justify-center gap-3 p-4 z-20">
+              <div className="w-8 h-8 border-3 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-xs font-bold text-orange-400 text-center animate-pulse">
                 {ocrStatus || (lang === 'en' ? 'Scanning...' : 'സ്കാൻ ചെയ്യുന്നു...')}
               </p>
             </div>
@@ -243,7 +243,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
 
         {/* Error message */}
         {errorMsg && (
-          <div className="px-4 py-2 bg-rose-950/40 border-t border-rose-800/50 flex items-center gap-2 text-rose-300 text-xs">
+          <div className="px-4 py-2.5 bg-rose-950/80 border-t border-rose-500/40 flex items-center gap-2 text-rose-300 text-xs font-semibold">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span className="flex-1">{errorMsg}</span>
           </div>
@@ -251,8 +251,8 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
 
         {/* Detection Preview Confirmation */}
         {detectedPreview && (
-          <div className="px-4 py-2.5 bg-emerald-950/40 border-t border-emerald-800/50 flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2 text-emerald-300">
+          <div className="px-4 py-2.5 bg-emerald-950/80 border-t border-emerald-500/40 flex items-center justify-between text-xs">
+            <div className="flex items-center gap-2 text-emerald-300 font-bold">
               <CheckCircle className="w-4 h-4" />
               <span>
                 {lang === 'en' ? 'Detected:' : 'കണ്ടെത്തിയത്:'} <strong>{detectedPreview.series || '??'} {detectedPreview.number}</strong>
@@ -260,7 +260,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
             </div>
             <button
               onClick={onClose}
-              className="px-2.5 py-1 rounded bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition-colors"
+              className="px-3 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black transition-colors cursor-pointer"
             >
               {lang === 'en' ? 'Apply' : 'ഉപയോഗിക്കുക'}
             </button>
@@ -268,11 +268,11 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
         )}
 
         {/* Bottom Scanner Controls */}
-        <div className="p-4 bg-slate-900/90 border-t border-slate-800 flex items-center gap-3">
+        <div className="p-4 bg-[#14171e] border-t-2 border-orange-500/30 flex items-center gap-3">
           <button
             onClick={handleCaptureFrameForOcr}
             disabled={isProcessingOcr || !isScanning}
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/20 transition-all disabled:opacity-50"
+            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-slate-950 font-black text-sm shadow-[0_4px_12px_rgba(234,88,12,0.3)] transition-all disabled:opacity-50 cursor-pointer"
           >
             <Zap className="w-4 h-4 fill-slate-950" />
             <span>
@@ -284,7 +284,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
 
           <button
             onClick={onClose}
-            className="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold transition-colors"
+            className="py-3 px-4 rounded-xl bg-[#1e222c] hover:bg-[#262c38] text-slate-300 text-sm font-bold border border-orange-500/20 transition-colors cursor-pointer"
           >
             {lang === 'en' ? 'Cancel' : 'റദ്ദാക്കുക'}
           </button>

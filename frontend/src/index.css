@@ -2,12 +2,32 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 antialiased font-sans min-h-screen selection:bg-amber-500 selection:text-black;
+    @apply bg-[#0e1015] text-slate-100 antialiased font-sans min-h-screen selection:bg-orange-500 selection:text-black;
+    /* Subtle fine paper texture feel */
+    background-image: radial-gradient(rgba(249, 115, 22, 0.04) 1px, transparent 0);
+    background-size: 24px 24px;
   }
 }
 
-/* Custom styles for ticket scanner viewfinder animation */
-@keyframes scannerLaser {
+/* Tactile Papercut Card */
+.paper-card {
+  background-color: #15181f;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.5),
+    0 8px 10px -6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+}
+
+/* Paper cut stamp effect */
+.paper-stamp {
+  border: 2px dashed rgba(249, 115, 22, 0.4);
+  background-color: rgba(249, 115, 22, 0.05);
+}
+
+/* Orange Scanner Viewfinder Laser */
+@keyframes scannerLaserOrange {
   0% {
     top: 5%;
     opacity: 0.8;
@@ -26,24 +46,19 @@
   position: absolute;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #22c55e, #10b981, #22c55e, transparent);
-  box-shadow: 0 0 12px #22c55e;
-  animation: scannerLaser 2.2s ease-in-out infinite;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ea580c, #f97316, #fb923c, #f97316, transparent);
+  box-shadow: 0 0 14px #f97316;
+  animation: scannerLaserOrange 2.2s ease-in-out infinite;
 }
 
-/* Shimmer animation */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+/* Tactile Button Press */
+.btn-paper {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 0 #c2410c, 0 8px 16px rgba(234, 88, 12, 0.3);
 }
 
-.animate-shimmer {
-  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.03) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+.btn-paper:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #c2410c, 0 3px 6px rgba(234, 88, 12, 0.2);
 }

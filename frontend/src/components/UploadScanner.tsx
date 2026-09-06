@@ -95,16 +95,16 @@ export const UploadScanner: React.FC<UploadScannerProps> = ({
       <div className="relative w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+        <div className="flex items-center justify-between px-5 py-4 border-b-2 border-orange-500/30 bg-[#161820]">
           <div className="flex items-center gap-2">
-            <UploadCloud className="w-5 h-5 text-amber-400" />
-            <h3 className="font-bold text-slate-100 text-base">
+            <UploadCloud className="w-5 h-5 text-orange-400" />
+            <h3 className="font-black text-slate-100 text-base">
               {lang === 'en' ? 'Upload Ticket Photo' : 'ടിക്കറ്റ് ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക'}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+            className="p-1.5 rounded-lg bg-[#0e1014] hover:bg-[#1a1d24] text-slate-300 border border-orange-500/30 transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -123,12 +123,12 @@ export const UploadScanner: React.FC<UploadScannerProps> = ({
           {!imageSrc ? (
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-slate-700 hover:border-amber-500/70 rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer transition-colors bg-slate-950/40 hover:bg-slate-950/70 text-center group"
+              className="border-2 border-dashed border-orange-500/40 hover:border-orange-400 rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer transition-colors bg-[#0f1116] hover:bg-[#151820] text-center group"
             >
-              <div className="w-12 h-12 rounded-full bg-slate-800 group-hover:bg-amber-500/20 text-slate-400 group-hover:text-amber-400 flex items-center justify-center mb-3 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 text-orange-400 group-hover:scale-110 flex items-center justify-center mb-3 transition-transform">
                 <ImageIcon className="w-6 h-6" />
               </div>
-              <p className="text-sm font-semibold text-slate-200">
+              <p className="text-sm font-bold text-slate-200">
                 {lang === 'en' ? 'Click to browse or take photo' : 'ഫോട്ടോ തിരഞ്ഞെടുക്കാൻ ക്ലിക്ക് ചെയ്യുക'}
               </p>
               <p className="text-xs text-slate-400 mt-1">
@@ -137,7 +137,7 @@ export const UploadScanner: React.FC<UploadScannerProps> = ({
             </div>
           ) : (
             <div className="space-y-3">
-              <div className="relative rounded-xl overflow-hidden border border-slate-800 max-h-56 flex items-center justify-center bg-black">
+              <div className="relative rounded-xl overflow-hidden border-2 border-orange-500/40 max-h-56 flex items-center justify-center bg-black">
                 <img src={imageSrc} alt="Uploaded ticket" className="w-full h-full object-contain" />
                 <button
                   onClick={() => {
@@ -145,7 +145,7 @@ export const UploadScanner: React.FC<UploadScannerProps> = ({
                     setDetectedData(null);
                     setErrorMsg('');
                   }}
-                  className="absolute top-2 right-2 p-1.5 rounded-full bg-slate-900/80 hover:bg-slate-900 text-slate-300 backdrop-blur-sm"
+                  className="absolute top-2 right-2 p-1.5 rounded-full bg-[#101216]/90 hover:bg-black text-slate-300 border border-orange-500/30 cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -155,7 +155,7 @@ export const UploadScanner: React.FC<UploadScannerProps> = ({
                 <button
                   onClick={processImage}
                   disabled={isProcessing}
-                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm shadow-md shadow-amber-500/20 flex items-center justify-center gap-2 transition-all disabled:opacity-60"
+                  className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-slate-950 font-black text-sm shadow-[0_4px_12px_rgba(234,88,12,0.3)] flex items-center justify-center gap-2 transition-all disabled:opacity-60 cursor-pointer"
                 >
                   <Zap className="w-4 h-4 fill-slate-950" />
                   <span>
@@ -171,13 +171,13 @@ export const UploadScanner: React.FC<UploadScannerProps> = ({
           {/* Progress Bar */}
           {isProcessing && (
             <div className="space-y-1.5">
-              <div className="flex justify-between text-xs text-slate-400">
+              <div className="flex justify-between text-xs text-slate-400 font-bold">
                 <span>{progressStatus}</span>
                 <span>{progressPercent}%</span>
               </div>
-              <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-[#0d0f13] rounded-full overflow-hidden border border-orange-500/30">
                 <div
-                  className="h-full bg-amber-500 transition-all duration-300"
+                  className="h-full bg-orange-500 transition-all duration-300"
                   style={{ width: `${progressPercent}%` }}
                 ></div>
               </div>
@@ -186,7 +186,7 @@ export const UploadScanner: React.FC<UploadScannerProps> = ({
 
           {/* Error Message */}
           {errorMsg && (
-            <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-800/40 flex items-start gap-2 text-rose-300 text-xs">
+            <div className="p-3 rounded-xl bg-rose-950/80 border-2 border-rose-500/40 flex items-start gap-2 text-rose-300 text-xs font-bold">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
               <span>{errorMsg}</span>
             </div>
@@ -194,20 +194,20 @@ export const UploadScanner: React.FC<UploadScannerProps> = ({
 
           {/* Success / Detected Details */}
           {detectedData && (
-            <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-800/50 space-y-2 text-xs">
-              <div className="flex items-center gap-2 text-emerald-300 font-semibold">
+            <div className="p-3.5 rounded-xl bg-emerald-950/80 border-2 border-emerald-500/40 space-y-2 text-xs">
+              <div className="flex items-center gap-2 text-emerald-300 font-bold">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>{lang === 'en' ? 'Ticket Detected Successfully!' : 'ടിക്കറ്റ് കണ്ടെത്തി!'}</span>
               </div>
               <div className="flex items-center justify-between text-slate-200">
                 <span>{lang === 'en' ? 'Series & Number:' : 'സീരീസും നമ്പറും:'}</span>
-                <span className="font-mono font-bold text-amber-400 text-sm">
+                <span className="font-mono font-black text-orange-400 text-sm">
                   {detectedData.series || '??'} {detectedData.number}
                 </span>
               </div>
               <button
                 onClick={onClose}
-                className="w-full mt-2 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors"
+                className="w-full mt-2 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition-colors cursor-pointer"
               >
                 {lang === 'en' ? 'Apply to Checker' : 'പരിശോധനയിലേക്ക് മാറ്റുക'}
               </button>

@@ -163,17 +163,17 @@ def parse_pdf_gazette(pdf_url: str):
             tier_amount = int(m.group(2))
             block_text = m.group(3)
 
-            # Extract 4-digit or 2-digit numbers
-            numbers = re.findall(r"\b\d{2,6}\b", block_text)
-            # Filter out known headers or dates
-            numbers = [n for n in numbers if len(n) in [2, 4, 6] and n not in ["2026", "2025", "2024"]]
+            # Lower tier winning numbers in Kerala State Lotteries are STRICTLY 4 digits
+            numbers = re.findall(r"\b\d{4}\b", block_text)
+            # Filter out year occurrences
+            numbers = [n for n in numbers if len(n) == 4 and n not in ["2026", "2025", "2024", "2023", "2022"]]
 
             if numbers:
                 prizes.append({
                     "tier_id": tier_num + 1,
                     "tier_name": f"{tier_num}th Prize",
                     "amount": tier_amount,
-                    "match_type": "suffix" if len(numbers[0]) <= 4 else "exact_number",
+                    "match_type": "suffix",
                     "numbers": numbers
                 })
 

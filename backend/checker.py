@@ -137,15 +137,15 @@ def verify_ticket(
                     total_amount += tier.amount
                     break
             
-            # Sub-case C: Suffix match (last 4, 3, or 2 digits)
-            elif len(p_clean) < 6 and len(p_clean) >= 2:
+            # Sub-case C: Kerala State Lottery lower tier match (strictly last 4 digits)
+            elif len(p_clean) == 4:
                 if norm_num.endswith(p_clean):
                     tier_won = True
                     matches.append(WinningTierMatch(
                         tier_name=tier.tier_name,
                         prize_amount=tier.amount,
                         matched_pattern=p_clean,
-                        match_reason=f"Last {len(p_clean)} digits ({p_clean}) match in {tier.tier_name}"
+                        match_reason=f"Last 4 digits ({p_clean}) match in {tier.tier_name}"
                     ))
                     total_amount += tier.amount
                     break

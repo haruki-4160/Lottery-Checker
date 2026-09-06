@@ -125,12 +125,12 @@ function verifyTicketClient(draw: DrawDetail, rawSeries: string, rawNumber: stri
         });
         totalAmount += tier.amount;
         break;
-      } else if (pClean.length >= 2 && pClean.length < 6 && normNum.endsWith(pClean)) {
+      } else if (pClean.length === 4 && normNum.endsWith(pClean)) {
         matches.push({
           tier_name: tier.tier_name,
           prize_amount: tier.amount,
           matched_pattern: pClean,
-          match_reason: `Last ${pClean.length} digits (${pClean}) match in ${tier.tier_name}`,
+          match_reason: `Last 4 digits (${pClean}) match in ${tier.tier_name}`,
         });
         totalAmount += tier.amount;
         break;
